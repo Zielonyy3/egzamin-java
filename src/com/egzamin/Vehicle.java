@@ -36,4 +36,9 @@ public abstract class Vehicle implements  Driveable{
     public float getRange(){
         return  (tankFulfillment / fuelUsage) * 100;
     }
+
+    public void changeColor(string color){
+        System.out.println("Zmieniono kolora na: "+ color);
+        price *= 1.05;
+    }
 }
