@@ -19,8 +19,8 @@ public abstract class Vehicle implements  Driveable{
             System.out.println("Zuzyles "+ usage + "litrow paliwa");
         }
     }
-    public void refuel(){
-        System.out.println("Tankujemy!");
+    public void refuel(float amount){
+        tankFulfillment += amount;
     }
 
     public float getRange(){
