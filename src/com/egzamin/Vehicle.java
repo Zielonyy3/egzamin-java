@@ -7,6 +7,7 @@ public abstract class Vehicle implements  Driveable{
     public float price;
     public float fuelUsage;
     public float tankFulfillment;
+    public float tankMax;
     public int numberOfKilometers;
 
     public void drive(float numberOfKilometers){
@@ -19,8 +20,17 @@ public abstract class Vehicle implements  Driveable{
             System.out.println("Zuzyles "+ usage + "litrow paliwa");
         }
     }
-    public void refuel(float amount){
-        tankFulfillment += amount;
+    public void refuel(float amount, boolean toMaximum){
+        float emptyVal = tankMax - tankFulfillment;
+        if(toMaximum){
+            System.out.println("Zatankowano do pelna!");
+            tankFulfillment = tankMax;
+        }else if(amount > emptyVal){
+            System.out.println("Wiecej sie nie dalo!");
+            tankFulfillment = tankMax;
+        }else{
+            tankFulfillment += amount;
+        }
     }
 
     public float getRange(){

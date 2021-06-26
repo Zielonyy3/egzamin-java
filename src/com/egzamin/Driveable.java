@@ -2,5 +2,5 @@ package com.egzamin;
 
 public interface Driveable {
     void drive(float numberOfKilometers);
-    void refuel(float amount);
+    void refuel(float amount, boolean toMaximum);
 }
