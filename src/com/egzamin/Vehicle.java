@@ -4,41 +4,51 @@ public abstract class Vehicle implements  Driveable{
     public String plateNumber;
     public String vinNumber;
     public String color;
-    public float price;
-    public float fuelUsage;
-    public float tankFulfillment;
-    public float tankMax;
+    public double price;
+    public double fuelUsage;
+    public double tankFulfillment;
+    public double tankMax;
     public int numberOfKilometers;
 
-    public void drive(float numberOfKilometers){
-        float range = getRange();
+    public Vehicle(double price, double fuelUsage, double tankFulfillment, double tankMax){
+
+        this.price = price;
+        this.fuelUsage = fuelUsage;
+        this.tankFulfillment = tankFulfillment;
+        this.tankMax = tankMax;
+        this.numberOfKilometers = 0;
+    }
+
+    public void drive(double numberOfKilometers){
+        double range = getRange();
         if(numberOfKilometers > range){
             System.out.println("Masz za malo paliwa aby tyle przejeachac");
         }else{
-            float usage =(numberOfKilometers/100) * fuelUsage;
-            tankFulfillment -= usage;
+            double usage =(numberOfKilometers/100) * this.fuelUsage;
+            this.tankFulfillment -= usage;
             System.out.println("Zuzyles "+ usage + "litrow paliwa");
         }
     }
-    public void refuel(float amount, boolean toMaximum){
-        float emptyVal = tankMax - tankFulfillment;
+    public void refuel(double amount, boolean toMaximum){
+        double emptyVal = this.tankMax - this.tankFulfillment;
         if(toMaximum){
             System.out.println("Zatankowano do pelna!");
-            tankFulfillment = tankMax;
+            this.tankFulfillment = this.tankMax;
         }else if(amount > emptyVal){
             System.out.println("Wiecej sie nie dalo!");
-            tankFulfillment = tankMax;
+            this.tankFulfillment = this.tankMax;
         }else{
-            tankFulfillment += amount;
+            this.tankFulfillment += amount;
         }
     }
 
-    public float getRange(){
-        return  (tankFulfillment / fuelUsage) * 100;
+    public double getRange(){
+        return  (this.tankFulfillment / this.fuelUsage) * 100;
     }
 
-    public void changeColor(string color){
+    public void changeColor(String color){
         System.out.println("Zmieniono kolora na: "+ color);
-        price *= 1.05;
+        this.color = color;
+        this.price *= 1.05;
     }
 }
