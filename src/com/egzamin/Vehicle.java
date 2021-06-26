@@ -9,8 +9,15 @@ public abstract class Vehicle implements  Driveable{
     public float tankFulfillment;
     public int numberOfKilometers;
 
-    public void drive(){
-        System.out.println("Jedziemy!");
+    public void drive(float numberOfKilometers){
+        float range = getRange();
+        if(numberOfKilometers > range){
+            System.out.println("Masz za malo paliwa aby tyle przejeachac");
+        }else{
+            float usage =(numberOfKilometers/100) * fuelUsage;
+            tankFulfillment -= usage;
+            System.out.println("Zuzyles "+ usage + "litrow paliwa");
+        }
     }
     public void refuel(){
         System.out.println("Tankujemy!");

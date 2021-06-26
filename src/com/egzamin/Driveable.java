@@ -1,6 +1,6 @@
 package com.egzamin;
 
 public interface Driveable {
-    void drive();
+    void drive(float numberOfKilometers);
     void refuel();
 }
